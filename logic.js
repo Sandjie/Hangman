@@ -29,14 +29,14 @@ function startGame(){
     //blanks for the word to be guessed
     for (var i=0; i< numBlanks; i++){
         blanks.push("_");
-    }
+    
       console.log(selectedWord);
       console.log(lettersinWord);
       console.log(blanks);
+}
 
 
-
-    document.getElementById("wordToGuess").innerHTML = blanksAndCorrectGuesses.join("  ");
+    document.getElementById("wordToGuess").innerHTML = blanks.join("  ");
     document.getElementById("numWrong").innerHTML = wrongGuesses;
     document.getElementById("numLeft").innerHTML = guesses;
     document.getElementById("winCount").innerHTML = winCount; 
@@ -44,7 +44,7 @@ function startGame(){
     
 
 
-}   
+  
 function checkLetters(letter){
     var isLetterInWord = false;
     for ( i=0; i < numBlanks; i++){
@@ -55,7 +55,7 @@ function checkLetters(letter){
 if (isLetterInWord){
     for (var i=0; i<numBlanks; i++){
     if (selectedWord[i] == letter){
-        blanksAndCorrectGuesses[i] = letter;
+        blanks[i] = letter;
     }
 }
 }
@@ -72,8 +72,8 @@ startGame();
 
 document.onkeyup = function(event)  {
     var lettersGuessed = String.fromCharCode(event.keyCode).toLowerCase();
-    //checkLetters(lettersGuessed);
-    //roundComplete();
+    checkLetters(lettersGuessed);
+    roundComplete();
 }
 
 console.log(lettersGuessed)};
